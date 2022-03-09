@@ -18,6 +18,19 @@ def md5(word):
   }
   return json.dumps(output)
 
+#factorial
+
+#need this to have a result for negative and decimal values, currently results in 404, works for positive integers
+
+import math
+@app.route('/factorial/<int:num>')
+def calcfactorial(num):
+  output = {
+    "input" : num,
+    "output" : math.factorial(num)
+  }
+  return json.dumps(output)
+
 
 
 
