@@ -1,0 +1,26 @@
+from flask import Flask, escape, request
+import json
+import hashlib
+
+#testing to see if it is working
+app = Flask(__name__)
+@app.route('/')
+def anything():
+  return 'Hello, World!'
+
+#converting input string to MD5 hash
+@app.route('/md5/<string:word>')
+def md5(word):
+  output = {
+    "input": word,
+    
+    "output": hashlib.md5(word.encode()).hexdigest()
+  }
+  return json.dumps(output)
+
+
+
+
+
+if __name__ == '__main__':
+  app.run(host= '0.0.0.0', port= '5000')
